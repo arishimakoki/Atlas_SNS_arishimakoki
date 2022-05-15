@@ -11,14 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
+ //Route::get('/', function () {
+    // return view('welcome');
+ //});
+ Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
-
-
+Auth::routes();
+//ログイン中のみ閲覧可能なページの設定
+Route::group(['middleware' => 'auth'], function() {
+   Route::get('/top', 'PostController@index')->name('posts.index');
+   Route::post('/top', 'PostController@index');
+});
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
