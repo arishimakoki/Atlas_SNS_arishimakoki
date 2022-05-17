@@ -21,7 +21,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    use Illuminate\Http\Request;
 
     /**
      * Where to redirect users after login.
