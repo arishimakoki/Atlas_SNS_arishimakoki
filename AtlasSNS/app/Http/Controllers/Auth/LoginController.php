@@ -21,6 +21,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    use Illuminate\Http\Request;
 
     /**
      * Where to redirect users after login.
@@ -51,4 +52,7 @@ class LoginController extends Controller
         }
         return view("auth.login");
     }
-}
+     public function loggedOut(\Illuminate\Http\Request $request) {
+      return redirect('/login');
+    }
+ }
