@@ -21,39 +21,43 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a href=""><img src="images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <?php $user = Auth::user();?>{{ $user->username }}<p>さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
+        <div id = "" class="head">
+        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+                <div id="" class="head-menu">
+                    {{ Auth::user()->username }}<p>さん<img src="images/icon1.png"></p>
+                        </header>
+
+                <div class="menu">
+                    <label for="menu_bar01"></label>
+                    <input type="checkbox" id="menu_bar01" />
+                <ul id="links01">
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
+               </div>
             </div>
+
         </div>
-    </header>
     <div id="row">
         <div id="container">
             @yield('content')
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p><?php $user = Auth::user();?>{{ $user->username }}さんの</p>
+                <p> {{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

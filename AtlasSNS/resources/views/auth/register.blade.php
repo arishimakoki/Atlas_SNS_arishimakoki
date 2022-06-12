@@ -16,9 +16,13 @@
 {{ Form::text('password',null,['class' => 'input']) }}
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
+{{ Form::text('password_confirm',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
+
+@foreach ($errors->all() as $error)
+  <li>{{$error}}</li>
+@endforeach
 
 <p><a href="/login">ログイン画面へ戻る</a></p>
 

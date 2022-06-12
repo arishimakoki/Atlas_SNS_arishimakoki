@@ -17,13 +17,8 @@
  Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-//ログイン中のみ閲覧可能なページの設定
-Route::group(['middleware' => 'auth'], function() {
-   Route::get('/top', 'PostController@index')->name('posts.index');
-   Route::post('/top', 'PostController@index');
-});
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/register', 'Auth\RegisterController@register');
@@ -31,6 +26,8 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
+
+Route::group(['middleware' => 'auth'], function() {
 //ログアウト用のルーティング
 Route::get('/logout', 'Auth\LoginController@logout');
 //ログイン中のページ
@@ -38,7 +35,11 @@ Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+Route::get('/top', 'UsersController@countFollowings');
+
+});
