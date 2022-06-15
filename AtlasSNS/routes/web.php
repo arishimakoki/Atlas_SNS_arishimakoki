@@ -32,7 +32,10 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/logout', 'Auth\LoginController@logout');
 //ログイン中のページ
 Route::get('/top','PostsController@index');
+//投稿機能
 Route::post('posts', 'PostsController@store');
+//投稿の削除
+Route::delete('/posts/{posts}', 'PostsController@destory')->name('posts.destroy');
 
 Route::get('/profile','UsersController@profile');
 

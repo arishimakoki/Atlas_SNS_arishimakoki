@@ -49,6 +49,14 @@
               <td class="table-text">
                 <div>{{ $post->user->name }}</div>
               </td>
+              <td><a href="">編集</a></td>
+              <td>
+                <form action="{{route('posts.destroy', $post->id)}}" method="post" class="float-right">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+              </td>
           </tr>
         @endforeach
      </tbody>
@@ -56,4 +64,12 @@
   </div>
 </div>
 @endif
+<script>
+function deletePost(e) {
+    'use strict';
+    if (confirm('本当に削除しますか？')){
+        document.getElementById('delete_'+ e.dataset.id).submit();
+    }
+}
+</script>
 @endsection

@@ -46,4 +46,15 @@ class PostsController extends Controller
 
        return redirect('top');
 }
+ public function destory($id)
+    {
+        $posts = Post::find($id);
+        if (auth()->user()->id != $posts->user_id) {
+            return redirect(('top'));
+        }
+
+        $posts->delete();
+        return redirect(('top'));
+
+    }
 }
