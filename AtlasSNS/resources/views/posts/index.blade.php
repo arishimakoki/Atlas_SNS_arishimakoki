@@ -49,7 +49,11 @@
               <td class="table-text">
                 <div>{{ $post->user->name }}</div>
               </td>
-              <td><a href="">編集</a></td>
+              <td>
+                @if (!Auth::guest() && Auth::user()->id == $post->user_id)
+                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary">編集</a>
+                @endif
+              </td>
               <td>
                 <form action="{{route('posts.destroy', $post->id)}}" method="post" class="float-right">
                 @csrf
