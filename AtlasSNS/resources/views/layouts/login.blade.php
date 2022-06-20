@@ -43,6 +43,7 @@
         <div id="container">
             @yield('content')
             @yield('edit')
+            @yield('search')
         </div >
         <div id="side-bar">
             <div id="confirm">

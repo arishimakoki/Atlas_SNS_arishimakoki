@@ -41,13 +41,13 @@
         <tbody>
           @foreach ($posts as $post)
             <tr>
+               <!-- 投稿者名の表示 -->
+              <td class="table-text">
+                <div>{{ $post->username }}</div>
+              </td>
               <!-- 投稿詳細 -->
               <td class="table-text">
                 <div>{{ $post->post }}</div>
-              </td>
-              <!-- 投稿者名の表示 -->
-              <td class="table-text">
-                <div>{{ $post->user->name }}</div>
               </td>
               <td>
                 @if (!Auth::guest() && Auth::user()->id == $post->user_id)

@@ -40,9 +40,9 @@ Route::patch('/posts/{posts}', 'PostsController@update')->name('posts.update');
 //投稿の削除
 Route::delete('/posts/{posts}', 'PostsController@destory')->name('posts.destroy');
 
-Route::get('/profile','UsersController@profile');
-
-Route::get('/search','UsersController@search');
+Route::get('/profile','UsersController@profile')->name('users.profile');
+//検索機能
+Route::get('/search','UsersController@search')->name('users.search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
