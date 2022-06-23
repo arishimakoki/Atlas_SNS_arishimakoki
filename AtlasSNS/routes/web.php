@@ -43,7 +43,9 @@ Route::delete('/posts/{posts}', 'PostsController@destory')->name('posts.destroy'
 Route::get('/profile','UsersController@profile')->name('users.profile');
 //検索機能
 Route::get('/search','UsersController@search')->name('users.search');
+//フォロ機能
 Route::post('/users{user}follows', 'UsersController@follow')->name('follow');
+//フォロー解除機能
 Route::post('/users/{user}unfollows', 'UsersController@unfollow')->name('unfollow');
 
 
