@@ -17,8 +17,11 @@ class CreateFollowsTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->integer('following_id');
             $table->integer('followed_id');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('current_timestamp on update current_timestamp'));
+
+            $table->foreign('following_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('followed_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

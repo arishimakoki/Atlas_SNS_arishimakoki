@@ -43,7 +43,7 @@
             <tr>
                <!-- 投稿者名の表示 -->
               <td class="table-text">
-                <div>{{ $post->username }}</div>
+                <div>{{ $post->user->username }}</div>
               </td>
               <!-- 投稿詳細 -->
               <td class="table-text">

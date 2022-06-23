@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -47,5 +48,21 @@ class UsersController extends Controller
                 'users' => $users,
                 'search' => $search,
             ]);
+    }
+    public function follow(User $user)
+    {
+        $follower = Auth::user();
+        $is_following = $follower->isFollowing($user->id);
+        if(!$is_following){
+             $follower->follow($user->id);
+        }
+      return back();
+}
+public function unfollow(User $user)
+    {
+        Auth::user()->unfollow($user->id);
+
+        return back();
+
     }
 }

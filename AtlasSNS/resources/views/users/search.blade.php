@@ -17,5 +17,16 @@
     <a href="{{ route('users.profile', ['user_id' => $user->id]) }}">
         {{ $user->username }}
     </a>
+    @if(Auth::user()->isFollowing($user->id))
+    <form method="POST" action="{{ route('unfollow', ['user' => $user->id]) }}">
+    @csrf
+    <button type="submit" class="btn btn-outline-info btn-sm" >フォロー解除</button>
+    </form>
+    @else
+    <form method="POST" action="{{ route('follow', ['user' => $user->id]) }}">
+     @csrf
+    <button type="submit" class="btn btn-outline-info btn-sm" >フォローする</button>
+    </form>
+    @endif
 @endforeach
 @endsection
