@@ -5,13 +5,43 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
     //
-    public function profile(){
-        return view('users.profile');
+    public function profile(User $user){
+        $user = Auth::user();
+        return view('users.profile',['user' => $user]);
     }
+
+     public function update(Request $request, User $user)
+    {
+         $validator = Validator::make($request->all(),[
+          'username'  => 'required|min:2|max:12',
+          'mail' => ['required', 'min:5', 'max:40', 'email', Rule::unique('users')->ignore(Auth::id())],
+          'new_password' => 'min:8|max:20|confirmed|alpha_num',
+          'new_password_confirmation' => 'min:8|max:20|alpha_num',
+          'bio' => 'max:150',
+          'images' => 'image',
+        ]);
+
+        $user = Auth::user();
+        //画像登録
+        $image = $request->file('images')->store('public/images');
+        $validator->validate();
+        $user->update([
+            'username' => $request->input('username'),
+            'mail' => $request->input('mail'),
+            'password' => bcrypt($request->input('newpassword')),
+            'bio' => $request->input('bio'),
+            'images' => basename($image),
+        ]);
+
+        return redirect()->route('profile');
+    }
+
     public function search(Request $request)
     {
         $users = User::All();

@@ -44,6 +44,7 @@
             @yield('content')
             @yield('edit')
             @yield('search')
+            @yield('profile')
         </div >
         <div id="side-bar">
             <div id="confirm">

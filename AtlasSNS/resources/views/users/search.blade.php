@@ -14,7 +14,6 @@
 </form>
 
 @foreach($users as $user)
-    <a href="{{ route('users.profile', ['user_id' => $user->id]) }}">
         {{ $user->username }}
     </a>
     @if(Auth::user()->isFollowing($user->id))

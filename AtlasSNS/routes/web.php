@@ -39,8 +39,9 @@ Route::get('/posts/edit/{posts}', 'PostsController@edit')->name('posts.edit');
 Route::patch('/posts/{posts}', 'PostsController@update')->name('posts.update');
 //投稿の削除
 Route::delete('/posts/{posts}', 'PostsController@destory')->name('posts.destroy');
-
-Route::get('/profile','UsersController@profile')->name('users.profile');
+//プローフィールの更新
+Route::get('/profile','UsersController@profile')->name('profile');
+Route::patch('/profile', 'UsersController@update')->name('profile.update');
 //検索機能
 Route::get('/search','UsersController@search')->name('users.search');
 //フォロ機能
