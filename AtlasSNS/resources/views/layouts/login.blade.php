@@ -24,7 +24,7 @@
         <div id = "" class="head">
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
                 <div id="" class="head-menu">
-                    {{ Auth::user()->username }}<p>さん<img src="images/icon1.png"></p>
+                    {{ Auth::user()->username }}<p>さん<img src="{{ asset('storage/images/' .auth()->user()->images) }}"></p>
                         </header>
 
                 <div class="menu">
