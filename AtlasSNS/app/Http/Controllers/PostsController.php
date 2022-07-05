@@ -88,4 +88,10 @@ class PostsController extends Controller
 
         return redirect('top');
     }
+
+    public function profile($id)
+    {
+    $post = post::find($id);
+    return view('users.profile', compact('post'));
+    }
 }

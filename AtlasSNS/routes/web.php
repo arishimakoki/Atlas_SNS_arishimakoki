@@ -50,6 +50,8 @@ Route::post('/users{user}follows', 'UsersController@follow')->name('follow');
 Route::post('/users/{user}unfollows', 'UsersController@unfollow')->name('unfollow');
 
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','FollowsController@followList');
+
+Route::get('/follower-list','FollowsController@followerList');
+Route::get('/profile/{id}', 'PostsController@profile')->name('users.profile');
 });
