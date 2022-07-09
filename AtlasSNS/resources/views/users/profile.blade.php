@@ -30,13 +30,13 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('new_password','password') !!}
-                    {!! Form::password('new_password',['class'=>'form-control']) !!}
+                    {!! Form::label('password','password') !!}
+                    {!! Form::password('password',['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('new_password_confirmation','password_confirm') !!}
-                    {!! Form::password('new_password_confirmation',['class'=>'form-control']) !!}
+                    {!! Form::label('password_confirm','password_confirm') !!}
+                    {!! Form::password('password_confirm',['class'=>'form-control']) !!}
                 </div>
 
                <div class="form-group">

@@ -21,8 +21,8 @@ class UsersController extends Controller
          $validator = Validator::make($request->all(),[
           'username'  => 'required|min:2|max:12',
           'mail' => ['required', 'min:5', 'max:40', 'email', Rule::unique('users')->ignore(Auth::id())],
-          'new_password' => 'min:8|max:20|confirmed|alpha_num',
-          'new_password_confirmation' => 'min:8|max:20|alpha_num',
+          'password' => 'min:8|max:20|string',
+          'password_confirm' => 'required|same:password',
           'bio' => 'max:150',
           'images' => 'image',
         ]);
@@ -34,12 +34,12 @@ class UsersController extends Controller
         $user->update([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
-            'password' => bcrypt($request->input('newpassword')),
+            'password' => bcrypt($request->input('password')),
             'bio' => $request->input('bio'),
             'images' => basename($image),
         ]);
 
-        return redirect()->route('profile');
+        return redirect('top');
     }
 
     public function search(Request $request)
