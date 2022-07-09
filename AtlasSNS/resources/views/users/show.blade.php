@@ -2,7 +2,9 @@
 
 @section('show')
 <img src="{{ asset('storage/images/' . $users->images) }}">
+<p>name</p>
 {{ $users->username }}
+<p>bio</p>
 {{ $users->bio }}
  @if(Auth::user()->isFollowing($users->id))
     <form method="POST" action="{{ route('unfollow', ['user' => $users->id]) }}">
@@ -17,6 +19,8 @@
     @endif
 @foreach ($posts as $post)
 @if($users->id == $post->user_id)
+<img src="{{ asset('storage/images/' . $users->images) }}">
+{{ $users->username }}
 {{ $post->post }}
 {{ $post->created_at }}
  @endif

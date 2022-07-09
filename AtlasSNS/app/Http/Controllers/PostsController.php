@@ -92,7 +92,8 @@ class PostsController extends Controller
     public function show(Request $request,$id,User $user)
     {
     $users = User::find($id);
-    $posts = Post::all();;
+    $posts = Post::all()
+    ->sortByDesc('created_at');
      $param = [
             'users'=>$users,
             'posts'=>$posts,
