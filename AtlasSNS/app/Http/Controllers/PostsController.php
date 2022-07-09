@@ -89,9 +89,14 @@ class PostsController extends Controller
         return redirect('top');
     }
 
-    public function profile($id)
+    public function show(Request $request,$id,User $user)
     {
-    $post = post::find($id);
-    return view('users.profile', compact('post'));
+    $users = User::find($id);
+    $posts = Post::all();;
+     $param = [
+            'users'=>$users,
+            'posts'=>$posts,
+        ];
+    return view('users.show',$param);
     }
 }

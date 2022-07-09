@@ -47,6 +47,7 @@
             @yield('profile')
             @yield('followList')
             @yield('followerList')
+            @yield('show')
         </div >
         <div id="side-bar">
             <div id="confirm">
