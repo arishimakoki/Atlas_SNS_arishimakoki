@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\File;
 
 class UsersController extends Controller
 {
@@ -29,15 +30,19 @@ class UsersController extends Controller
 
         $user = Auth::user();
         //画像登録
-        $image = $request->file('images')->store('public/images');
         $validator->validate();
         $user->update([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
             'bio' => $request->input('bio'),
+        ]);
+        if ($request->has('images')) {
+         $image = $request->file('images')->store('public/images');
+                 $user->update([
             'images' => basename($image),
         ]);
+        }
 
         return redirect('top');
     }
@@ -71,7 +76,6 @@ class UsersController extends Controller
             $users = $query->paginate(20);
 
         }
-
         // ビューにusersとsearchを変数として渡す
         return view('users.search')
             ->with([
@@ -86,13 +90,12 @@ class UsersController extends Controller
         if(!$is_following){
              $follower->follow($user->id);
         }
-      return back();
+      return redirect('search');
 }
 public function unfollow(User $user)
     {
         Auth::user()->unfollow($user->id);
 
-        return back();
-
+        return redirect('search');
     }
 }

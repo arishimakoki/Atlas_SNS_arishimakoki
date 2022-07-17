@@ -17,7 +17,9 @@ class PostsController extends Controller
 
     public function index()
     {
-     $posts = Post::get();
+     $posts = Post::get()
+     ->sortByDesc('created_at');
+
 
       return view('posts.index',[
       'posts'=> $posts
@@ -28,7 +30,7 @@ class PostsController extends Controller
 {
     //バリデーション
     $validator = Validator::make($request->all(), [
-       'post' => 'required|max:255',
+       'post' => 'required|max:150',
     ]);
 
     //バリデーションエラー
@@ -37,14 +39,12 @@ class PostsController extends Controller
         ->withInput()
            ->withErrors($validator);
    }
-
      //以下に登録処理を記述（Eloquentモデル）
       $posts = new Post;
       $posts->post = $request->post;
       $posts->user_id = Auth::id();//ここでログインしているユーザidを登録しています
       $posts->id;
       $posts->save();
-
        return redirect('top');
 }
 
@@ -65,7 +65,11 @@ class PostsController extends Controller
         $validator = Validator::make($request->all(), [
        'post' => 'required|max:150',
     ]);
-
+       if ($validator->fails()) {
+          return redirect('top')
+          ->withInput()
+          ->withErrors($validator);
+   }
         $posts = Post::find($id);
         if (auth()->user()->id != $posts->user_id) {
             return redirect(route('top'));
