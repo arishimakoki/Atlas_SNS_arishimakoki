@@ -3,15 +3,16 @@
 @section('content')
 
 <div id="clear">
+  <div class="add">
   <p>
-     @if (Session::has('username'))
-             {{ Session::get('username') }}さん</div>
-   @endif
+     {{ Session::get('username') }}さん
     </p>
   <p>ようこそ！AtlasSNSへ！</p>
+  </div>
+  <div class="coment">
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
-
+   </div>
   <p class="btn"><a href="/login">ログイン画面へ</a></p>
 </div>
 
