@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Auth;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+
 
 class PostsController extends Controller
 {
@@ -58,24 +59,15 @@ class PostsController extends Controller
         return view('posts/edit')->with('post', $posts);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $posts = $request->all();
-
-        $validator = Validator::make($request->all(), [
-       'post' => 'required|max:150',
-    ]);
-       if ($validator->fails()) {
-          return redirect('top')
-          ->withInput()
-          ->withErrors($validator);
-   }
-        $posts = Post::find($id);
-        if (auth()->user()->id != $posts->user_id) {
-            return redirect(route('top'));
-        }
-        $posts->post=$request->input('post');
-        $posts->save();
+        $id = $request->input('id');
+      $up_post = $request->input('upPost');
+      Post::query()
+      ->where('id', $id)
+      ->update(
+        ['post' => $up_post]
+      );
         return redirect('top');
      }
 

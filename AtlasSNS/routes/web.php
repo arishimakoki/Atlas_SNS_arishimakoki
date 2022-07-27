@@ -35,8 +35,7 @@ Route::get('/top','PostsController@index');
 //投稿機能
 Route::post('posts', 'PostsController@store');
 //投稿の編集・更新
-Route::get('/posts/edit/{posts}', 'PostsController@edit')->name('posts.edit');
-Route::patch('/posts/{posts}', 'PostsController@update')->name('posts.update');
+Route::put('/top', 'PostsController@update')->name('posts.update');
 //投稿の削除
 Route::delete('/posts/{posts}', 'PostsController@destory')->name('posts.destroy');
 //プローフィールの更新

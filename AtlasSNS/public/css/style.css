@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 html {
 
 }
@@ -7,17 +6,36 @@ html {
 body {
 
 }
-
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
 /* header */
 header {
     background: #186AC9;
-    position: fixed;
     width: 100%;
+    height: 80px;
+    padding-top: 20px;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
 }
 header img{
-    max-width: 40%;
+    max-width: 30%;
+        margin-left: 10%;
 }
-
+.icon{
+    max-width: 50px;
+    position: absolute;
+    right: 2%;
+}
+.username{
+    margin-top: 10px;
+}
 .head{
     display: flex;
 }
@@ -32,66 +50,72 @@ header img{
 .head-menu img{
     float: right;
 }
-
-.menu {
-    max-width: 160px;
-    position: relative;
-    margin-right: 0;
-    margin-left: auto;
+/* アコーディオンメニュー*/
+#acmenu{
     z-index: 100;
 }
-
-.menu a {
+#acmenu a {
     display: block;
     padding: 15px;
     text-decoration: none;
-    color: #727272;
+    color: #999999;
 }
 
-label {
-    display: block;
-    margin: 0 0 4px 0;
-    padding: 15px;
-    line-height: 1;
-    cursor: pointer;
+
+.accordion {
+    display: none;
 }
 
-input {
-}
-
-.menu ul {
-    margin: 0;
+#acmenu ul {
+    position: absolute;
+    margin-top: 60px;
+    left: 80%;
     padding: 0;
-    background: #f4f4f4;
+    background: #fff;
     list-style: none;
 }
 
-.menu li {
+#acmenu li {
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid #00008b;
+    width: 0;
     height: 0;
     overflow: hidden;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
 }
-
-.menu li:hover {
+#acmenu li :hover{
     color: #fff;
-    background-color: #000088;
+}
+.acicon {
+    padding: 0 15px;
+    margin-top: 10px;
 }
 
-#menu_bar01:checked~#links01 li,
-#menu_bar02:checked~#links02 li {
-    height: 54px;
+/*右側のアイコン*/
+
+.acicon:before {
+    content: "\f105";
+}
+
+/*チェックボックスをクリックした時に見える要素*/
+
+#acmenu_bar01:checked~#links01 li{
+    height: 69px;
+    width: 300px;
     opacity: 1;
 }
-
+#acmenu_bar01:checked~#links01 li:hover{
+    background-color: #00008b;
+}
 /* main content */
 #row {
     display: flex;
     flex-flow: row wrap;
-    position: fixed;
     width: 100%;
     top: 7%;
 }
@@ -99,8 +123,242 @@ input {
 #container {
     flex: 0 0 80%;
 }
-
+/*サイドバー*/
 #side-bar {
-    flex: 0 0 19%;
     border-left: 1px solid #727272;
+    flex: 0 0 19%;
+    z-index: 1;
+}
+#confirm p{
+    margin-top: 5%;
+}
+#confirm .follows-count{
+    display: flex;
+    gap: 50px;
+}
+#confirm .followers-count{
+    display: flex;
+    gap: 35px;
+}
+#confirm .search-btn{
+    border-top: 1px solid #727272;
+    text-align: center;
+    margin-top: 10%;
+}
+#confirm .btn-follows{
+    margin-left: 50%;
+}
+/*投稿編集　モーダル表示*/
+#content .modal-dialog{
+    margin-top: 20%;
+    margin-right: 40%;
+}
+#content .modal-content{
+    width: 800px;
+}
+#content .form-control{
+    margin: 0 auto;
+    width: 750px;
+    height: 200px;
+}
+#content .edit{
+    margin-bottom: 2%;
+    margin-left: 90%;
+}
+
+/*投稿ページ*/
+#content .form-text{
+    width: 100%;
+    margin-left: 2%;
+    margin-top: 1%;
+    resize: none;
+    outline: none;
+}
+#content .form-group{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+#content .col-sm-offset-3{
+    text-align: right;
+}
+#content .card-body-text{
+    border-bottom: 3px solid #cccccc;
+    text-align: right;
+}
+
+#content table td{
+    background-color: #fff;
+}
+#content table td:nth-child(4) {
+    vertical-align: bottom;
+    padding-bottom: 0cm;
+    padding-top: 4%;
+}
+#content table td:nth-child(4) .button-edit{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 2%;
+}
+#content table td:nth-child(1) {
+    padding-left: 10%;
+}
+#content table td:nth-child(2) .table-post{
+    margin-top: 3%;
+    font-size: 13px;
+}
+#content table td:nth-child(3) .table-time{
+    position: absolute;
+    margin-left: 3.5%;
+    font-size: 13px;
+}
+
+/* フォローリスト　*/
+#followList table td{
+    background-color: #fff;
+}
+#followList table td:nth-child(1) {
+    padding-left: 10%;
+}
+#followList table td:nth-child(2) .table-post {
+    margin-top: 3%;
+    font-size: 13px;
+}
+#followList table td:nth-child(3){
+    font-size: 13px;
+    text-align: right;
+}
+
+#followList .card-body{
+    display: flex;
+    border-bottom: 3px solid #cccccc;
+}
+#followList .follow{
+    font-size: 25px;
+    padding-top: 1%;
+    margin-left: 8%;
+}
+#followList .follow-list{
+    width: 60%;
+    margin-left: 10%;
+    padding-left: 1%;
+}
+/* フォロワーリスト　*/
+#followerList table td {
+    background-color: #fff;
+}
+
+#followerList table td:nth-child(1) {
+    padding-left: 10%;
+}
+
+#followerList table td:nth-child(2) .table-post {
+    margin-top: 3%;
+    font-size: 13px;
+}
+
+#followerList table td:nth-child(3) {
+    font-size: 13px;
+    text-align: right;
+}
+
+#followerList .card-body {
+    display: flex;
+    border-bottom: 3px solid #cccccc;
+}
+
+#followerList .follow {
+    font-size: 25px;
+    padding-top: 1%;
+    margin-left: 8%;
+}
+
+#followerList .follow-list {
+    width: 60%;
+    margin-left: 10%;
+    padding-left: 1%;
+}
+/*ユーザー検索ページ*/
+#search .card-body {
+    display: flex;
+    border-bottom: 3px solid #cccccc;
+}
+#search .sarch-text{
+    resize: none;
+    font-size: 25px;
+    border: 1px solid #727272;
+}
+#search .search-form{
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#search .search-word{
+    font-size: 20px;
+    margin-top: 3%;
+    margin-left: 25%;
+}
+#search .search-list{
+    display: flex;
+    margin-left: 30%;
+    padding-top: 4%;
+}
+#search .username{
+    font-size: 25px;
+    margin-left: 4%;
+}
+#search .follow-button{
+    position: absolute;
+    padding-left: 30%;
+    width: 10%;
+}
+/* ログインユーザー以外のプロフィール */
+#show .card-body{
+    border-bottom: 3px solid #cccccc;
+    font-size: 17px;
+}
+#show .show-profile{
+    width: 100%;
+    display: flex;
+    margin-left: 10%;
+    padding-top: 3%;
+}
+#show .name{
+    display: flex;
+    width: 100%;
+    margin-left: 40%;
+}
+#show .user-name{
+    padding-left: 17%;
+    position: absolute;
+}
+#show .user-bio{
+    display: flex;
+    width: 100%;
+    margin-top: 50%;
+    margin-left: 40%;
+}
+#show .bio{
+    position: absolute;
+    padding-left: 17%;
+}
+#show .follow-button{
+    text-align: right;
+}
+#show table td {
+    background-color: #fff;
+}
+
+#show table td:nth-child(1) {
+    padding-left: 10%;
+}
+
+#show table td:nth-child(2) .table-post {
+    margin-top: 3%;
+    font-size: 13px;
+}
+
+#show table td:nth-child(3) {
+    font-size: 13px;
+    text-align: right;
 }
