@@ -25,7 +25,7 @@
       <tbody>
         @foreach ($posts as $post)
         <tr>
-          <td class="table-image">
+          <td class="table-image" style="width: 15%;">
             <img src="{{ asset('storage/images/' . $post->user->images) }}" width="50px" height="50px">
           </td>
       <!-- 投稿者名の表示 -->
@@ -55,27 +55,28 @@
               @endif
             </td>
         </tr>
+              <!-- ツイート編集用モーダル -->
+          <div class="modal fade" id="Modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="{{ route('posts.update', ['id' => $post->id ]) }}" method="post">
+                  <div class="modal-body">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input id="id" class="form-control" type="hidden" name="id" value="">
+                    <textarea maxlength="150" id="post" class="form-control"  name="upPost" value="" ></textarea>
+                  </div>
+                      <button type="submit" class="edit">
+                        <img src="{{ asset('images/edit.png') }}" alt="編集" width="25px">
+                      </button>
+                        {{ csrf_field() }}
+                </form>
+              </div>
+            </div>
+          </div>
+
        @endforeach
       </tbody>
     </table>
   @endif
-      <!-- ツイート編集用モーダル -->
-<div class="modal fade" id="Modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form action="{{ route('posts.update', ['id' => $post->id ]) }}" method="post">
-        <div class="modal-body">
-          <input type="hidden" name="_method" value="PUT">
-          <input id="id" class="form-control" type="hidden" name="id" value="">
-          <input maxlength="150" id="post" class="form-control" type="textarea" name="upPost" value="" >
-        </div>
-            <button type="submit" class="edit">
-              <img src="{{ asset('images/edit.png') }}" alt="編集" width="25px">
-            </button>
-              {{ csrf_field() }}
-      </form>
-    </div>
-  </div>
-</div>
 
 @endsection

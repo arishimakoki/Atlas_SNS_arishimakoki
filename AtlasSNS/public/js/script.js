@@ -5,7 +5,7 @@ $(function () {
     var id = button.data('post-id');
 
     var modal = $(this);
-    modal.find('.modal-body input#post').val(post);
+    modal.find('.modal-body textarea#post').val(post);
     modal.find('.modal-body input#id').val(id);
   });
 });

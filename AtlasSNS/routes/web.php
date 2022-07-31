@@ -43,11 +43,14 @@ Route::get('/profile','UsersController@profile')->name('profile');
 Route::patch('/profile', 'UsersController@update')->name('profile.update');
 //検索機能
 Route::get('/search','UsersController@search')->name('users.search');
-//フォロ機能
+//フォロ-機能
 Route::post('/users{user}follows', 'UsersController@follow')->name('follow');
 //フォロー解除機能
-Route::post('/users/{user}unfollows', 'UsersController@unfollow')->name('unfollow');
+Route::post('/users/{user}/unfollows', 'UsersController@unfollow')->name('unfollow');
 
+Route::post('/search/{user}follows', 'UsersController@follows')->name('follows');
+//フォロー解除機能
+Route::post('/search/{user}/unfollows', 'UsersController@unfollows')->name('unfollows');
 
 Route::get('/follow-list','FollowsController@followList');
 

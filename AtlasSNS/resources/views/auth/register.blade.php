@@ -12,10 +12,10 @@
 {{ Form::text('mail',null,['class' => 'input']) }}
 
 {{ Form::label('password') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::password('password',['class' => 'input']) }}
 
 {{ Form::label('password confirm') }}
-{{ Form::text('password_confirm',null,['class' => 'input']) }}
+{{ Form::password('password_confirm',['class' => 'input']) }}
 
 {{ Form::submit('REGISTER',['class' => 'submit']) }}
 </div>

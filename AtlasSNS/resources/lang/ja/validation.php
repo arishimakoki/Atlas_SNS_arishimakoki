@@ -1,59 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
-
-use App\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-
-class RegisterController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => 'required|string|min:2|max:12',
-            'mail' => 'required|string|email|min:5|max:40|unique:users',
-            'password' => 'min:8|max:20|string',
-            'password_confirm' => 'required|same:password',
-        ],[
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -177,52 +124,35 @@ class RegisterController extends Controller
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
-],[
-    'username' => 'ユーザー名',
-    'mail' => 'メールアドレス',
-    'password' => 'パスワード',
-    'password_confirm' => 'パスワード確認',
 
-]);
-    }
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Custom バリデーション言語行
+    |--------------------------------------------------------------------------
+    |
+    | "属性.ルール"の規約でキーを指定することでカスタムバリデーション
+    | メッセージを定義できます。指定した属性ルールに対する特定の
+    | カスタム言語行を手早く指定できます。
+    |
+    */
 
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
+    'custom' => [
+        '属性名' => [
+            'ルール名' => 'カスタムメッセージ',
+        ],
+    ],
 
-    public function register(Request $request){
-        if($request->isMethod('post')){
-            $data = $request->input();
+    /*
+    |--------------------------------------------------------------------------
+    | カスタムバリデーション属性名
+    |--------------------------------------------------------------------------
+    |
+    | 以下の言語行は、例えば"email"の代わりに「メールアドレス」のように、
+    | 読み手にフレンドリーな表現でプレースホルダーを置き換えるために指定する
+    | 言語行です。これはメッセージをよりきれいに表示するために役に立ちます。
+    |
+    */
 
-           $validator = $this->validator($data);
-                if ($validator->fails()) {
-                    return redirect('register')
-                    ->withErrors($validator)
-                    ->withInput();
-                }
-            $this->create($data);
+    'attributes' => [],
 
-            $username = $request->input('username');
-            return redirect('added')->with('username',$username);
-        }
-        return view('auth.register');
-    }
-
-    public function added(){
-        return view('auth.added');
-    }
-}
+];

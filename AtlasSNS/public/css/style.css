@@ -1,11 +1,9 @@
 @charset "utf-8";
-html {
 
-}
+html {}
 
-body {
+body {}
 
-}
 button {
     background-color: transparent;
     border: none;
@@ -14,6 +12,7 @@ button {
     padding: 0;
     appearance: none;
 }
+
 /* header */
 header {
     background: #186AC9;
@@ -24,36 +23,45 @@ header {
     font-size: 20px;
     font-weight: bold;
 }
-header img{
+
+header img {
     max-width: 30%;
-        margin-left: 10%;
+    margin-left: 10%;
 }
-.icon{
+
+.icon {
     max-width: 50px;
     position: absolute;
     right: 2%;
 }
-.username{
+
+.username {
     margin-top: 10px;
 }
-.head{
+
+.head {
     display: flex;
 }
 
-.head-menu{
+.head-menu {
     display: flex;
     margin-right: 0;
     margin-left: auto;
     width: 20%;
 }
 
-.head-menu img{
+.head-menu img {
     float: right;
 }
+
 /* アコーディオンメニュー*/
-#acmenu{
+#acmenu {
     z-index: 100;
 }
+#acmenu input{
+    display: none;
+}
+
 #acmenu a {
     display: block;
     padding: 15px;
@@ -61,14 +69,9 @@ header img{
     color: #999999;
 }
 
-
-.accordion {
-    display: none;
-}
-
 #acmenu ul {
     position: absolute;
-    margin-top: 60px;
+    margin-top: 40px;
     left: 80%;
     padding: 0;
     background: #fff;
@@ -88,30 +91,53 @@ header img{
     -o-transition: all 0.1s;
     transition: all 0.1s;
 }
-#acmenu li :hover{
+
+#acmenu li :hover {
     color: #fff;
 }
-.acicon {
-    padding: 0 15px;
-    margin-top: 10px;
+
+#acmenu label:after {
+    content: "";
+    margin: auto;
+    position: absolute;
+    top: 35px;
+    right: 105px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: #fff 2px solid;
+    border-right: #fff 2px solid;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
 }
-
-/*右側のアイコン*/
-
-.acicon:before {
-    content: "\f105";
+#acmenu input[type=checkbox]:checked+label:after{
+    content: "";
+    margin: auto;
+    position: absolute;
+    top: 35px;
+    right: 105px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: #fff 2px solid;
+    border-right: #fff 2px solid;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
-
 /*チェックボックスをクリックした時に見える要素*/
 
-#acmenu_bar01:checked~#links01 li{
+#acmenu_bar01:checked~#links01 li {
     height: 69px;
     width: 300px;
     opacity: 1;
 }
-#acmenu_bar01:checked~#links01 li:hover{
+
+#acmenu_bar01:checked~#links01 li:hover {
     background-color: #00008b;
 }
+
 /* main content */
 #row {
     display: flex;
@@ -123,126 +149,154 @@ header img{
 #container {
     flex: 0 0 80%;
 }
+
 /*サイドバー*/
 #side-bar {
     border-left: 1px solid #727272;
+    min-height: 100vh;
     flex: 0 0 19%;
     z-index: 1;
 }
-#confirm p{
+
+#confirm p {
     margin-top: 5%;
 }
-#confirm .follows-count{
+
+#confirm .follows-count {
     display: flex;
     gap: 50px;
 }
-#confirm .followers-count{
+
+#confirm .followers-count {
     display: flex;
     gap: 35px;
 }
-#confirm .search-btn{
+
+#confirm .search-btn {
     border-top: 1px solid #727272;
     text-align: center;
     margin-top: 10%;
 }
-#confirm .btn-follows{
+
+#confirm .btn-follows {
     margin-left: 50%;
 }
+
 /*投稿編集　モーダル表示*/
-#content .modal-dialog{
+#content .modal-dialog {
     margin-top: 20%;
     margin-right: 40%;
 }
-#content .modal-content{
+
+#content .modal-content {
     width: 800px;
 }
-#content .form-control{
+
+#content .form-control {
     margin: 0 auto;
     width: 750px;
     height: 200px;
 }
-#content .edit{
+
+#content .edit {
     margin-bottom: 2%;
     margin-left: 90%;
 }
 
+#content .form-control{
+        resize: none;
+}
+
 /*投稿ページ*/
-#content .form-text{
+#content .form-text {
     width: 100%;
     margin-left: 2%;
     margin-top: 1%;
     resize: none;
     outline: none;
 }
-#content .form-group{
+
+#content .form-group {
     display: flex;
     margin-left: 5%;
     margin-top: 2%;
 }
-#content .col-sm-offset-3{
+
+#content .col-sm-offset-3 {
     text-align: right;
 }
-#content .card-body-text{
+
+#content .card-body-text {
     border-bottom: 3px solid #cccccc;
     text-align: right;
 }
 
-#content table td{
+#content table td {
     background-color: #fff;
 }
+
 #content table td:nth-child(4) {
     vertical-align: bottom;
     padding-bottom: 0cm;
     padding-top: 4%;
 }
-#content table td:nth-child(4) .button-edit{
+
+#content table td:nth-child(4) .button-edit {
     position: absolute;
     margin-top: 10px;
     margin-left: 2%;
 }
+
 #content table td:nth-child(1) {
     padding-left: 10%;
 }
-#content table td:nth-child(2) .table-post{
+#content table td:nth-child(2) .table-post {
     margin-top: 3%;
     font-size: 13px;
 }
-#content table td:nth-child(3) .table-time{
+
+#content table td:nth-child(3) .table-time {
     position: absolute;
     margin-left: 3.5%;
     font-size: 13px;
 }
 
 /* フォローリスト　*/
-#followList table td{
+#followList table td {
     background-color: #fff;
 }
+
 #followList table td:nth-child(1) {
     padding-left: 10%;
 }
+
 #followList table td:nth-child(2) .table-post {
     margin-top: 3%;
     font-size: 13px;
 }
-#followList table td:nth-child(3){
+
+#followList table td:nth-child(3) {
     font-size: 13px;
     text-align: right;
 }
 
-#followList .card-body{
+#followList .card-body {
     display: flex;
     border-bottom: 3px solid #cccccc;
 }
-#followList .follow{
+
+#followList .follow {
     font-size: 25px;
     padding-top: 1%;
     margin-left: 8%;
 }
-#followList .follow-list{
+
+#followList .follow-list {
     width: 60%;
     margin-left: 10%;
     padding-left: 1%;
 }
+
 /* フォロワーリスト　*/
 #followerList table td {
     background-color: #fff;
@@ -278,73 +332,95 @@ header img{
     margin-left: 10%;
     padding-left: 1%;
 }
+
 /*ユーザー検索ページ*/
 #search .card-body {
     display: flex;
     border-bottom: 3px solid #cccccc;
 }
-#search .sarch-text{
+
+#search .sarch-text {
     resize: none;
     font-size: 25px;
     border: 1px solid #727272;
 }
-#search .search-form{
+
+#search .search-form {
     margin-left: 5%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
-#search .search-word{
+
+#search .search-word {
     font-size: 20px;
     margin-top: 3%;
     margin-left: 25%;
 }
-#search .search-list{
+
+#search .search-list {
     display: flex;
     margin-left: 30%;
     padding-top: 4%;
 }
-#search .username{
+
+#search .username {
     font-size: 25px;
     margin-left: 4%;
 }
-#search .follow-button{
+
+#search .follow-button {
     position: absolute;
     padding-left: 30%;
     width: 10%;
 }
+#search .search-button{
+    padding: 4px 4px;
+    background-color: #186AC9;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 5px;
+}
+
 /* ログインユーザー以外のプロフィール */
-#show .card-body{
+#show .card-body {
     border-bottom: 3px solid #cccccc;
     font-size: 17px;
 }
-#show .show-profile{
+
+#show .show-profile {
     width: 100%;
     display: flex;
     margin-left: 10%;
     padding-top: 3%;
 }
-#show .name{
+
+#show .name {
     display: flex;
     width: 100%;
     margin-left: 40%;
 }
-#show .user-name{
+
+#show .user-name {
     padding-left: 17%;
     position: absolute;
 }
-#show .user-bio{
+
+#show .user-bio {
     display: flex;
     width: 100%;
     margin-top: 50%;
     margin-left: 40%;
 }
-#show .bio{
+
+#show .bio {
     position: absolute;
     padding-left: 17%;
 }
-#show .follow-button{
+
+#show .follow-button {
     text-align: right;
 }
+
 #show table td {
     background-color: #fff;
 }
@@ -361,4 +437,26 @@ header img{
 #show table td:nth-child(3) {
     font-size: 13px;
     text-align: right;
+}
+/*プロフィール編集*/
+#profile .mb-7{
+    margin-left: 15%;
+    padding-top: 4%;
+}
+#profile .col-sm-5{
+    margin-left: 20%;
+}
+#profile .icon-image{
+    position: absolute;
+    margin-top: 2.5%;
+    margin-left: 7%;
+}
+#profile .form-group{
+    text-align: center;
+    padding-top: 4%;
+}
+#inputdefault{
+    height: 100px;
+    padding-left: 30%;
+    padding-top: 10%;
 }
