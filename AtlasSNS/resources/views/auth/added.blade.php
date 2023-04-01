@@ -7,7 +7,7 @@
   <p>
      {{ Session::get('username') }}さん
     </p>
-  <p>ようこそ！AtlasSNSへ！</p>
+  <p>ようこそ！SNSへ！</p>
   </div>
   <div class="coment">
   <p>ユーザー登録が完了しました。</p>

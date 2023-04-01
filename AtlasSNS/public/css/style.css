@@ -2,7 +2,9 @@
 
 html {}
 
-body {}
+body {
+    display: flex;
+}
 
 button {
     background-color: transparent;
@@ -15,153 +17,37 @@ button {
 
 /* header */
 header {
-    background: #186AC9;
-    width: 100%;
-    height: 80px;
-    padding-top: 20px;
+    background-color: #000b00;
+    width: 40%;
+    height: 100%;
     color: aliceblue;
     font-size: 20px;
     font-weight: bold;
 }
-
-header img {
-    max-width: 30%;
-    margin-left: 10%;
-}
-
-.icon {
-    max-width: 50px;
-    position: absolute;
-    right: 2%;
-}
-
-.username {
-    margin-top: 10px;
-}
-
-.head {
-    display: flex;
-}
-
-.head-menu {
-    display: flex;
-    margin-right: 0;
-    margin-left: auto;
-    width: 20%;
-}
-
-.head-menu img {
-    float: right;
-}
-
-/* アコーディオンメニュー*/
-#acmenu {
-    z-index: 100;
-}
-#acmenu input{
-    display: none;
-}
-
-#acmenu a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #999999;
-}
-
-#acmenu ul {
-    position: absolute;
-    margin-top: 40px;
-    left: 80%;
-    padding: 0;
-    background: #fff;
-    list-style: none;
-}
-
-#acmenu li {
-    padding-top: 10px;
-    text-align: center;
-    border: 1px solid #00008b;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    -webkit-transition: all 0.1s;
-    -moz-transition: all 0.1s;
-    -ms-transition: all 0.1s;
-    -o-transition: all 0.1s;
-    transition: all 0.1s;
-}
-
-#acmenu li :hover {
-    color: #fff;
-}
-
-#acmenu label:after {
-    content: "";
-    margin: auto;
-    position: absolute;
-    top: 35px;
-    right: 105px;
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-top: #fff 2px solid;
-    border-right: #fff 2px solid;
-    -webkit-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    transform: rotate(135deg);
-}
-#acmenu input[type=checkbox]:checked+label:after{
-    content: "";
-    margin: auto;
-    position: absolute;
-    top: 35px;
-    right: 105px;
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-top: #fff 2px solid;
-    border-right: #fff 2px solid;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-/*チェックボックスをクリックした時に見える要素*/
-
-#acmenu_bar01:checked~#links01 li {
-    height: 69px;
-    width: 300px;
-    opacity: 1;
-}
-
-#acmenu_bar01:checked~#links01 li:hover {
-    background-color: #00008b;
-}
-
-/* main content */
-#row {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-    top: 7%;
-}
-
-#container {
-    flex: 0 0 80%;
-}
-
 /*サイドバー*/
 #side-bar {
-    border-left: 1px solid #727272;
+    padding-left: 10%;
+    position: fixed;
     min-height: 100vh;
-    flex: 0 0 19%;
-    z-index: 1;
+    background: #000b00;
 }
-
+#confirm li a{
+    color: inherit;
+}
+#confirm .navi li{
+    padding-top: 30%;
+}
+#confirm .users{
+    display: flex;
+    width: 300px;
+}
+#confirm .username{
+    padding-top: 5%;
+    padding-left: 5%;
+}
 #confirm p {
-    margin-top: 5%;
+    margin-top: 10%;
 }
-
 #confirm .follows-count {
     display: flex;
     gap: 50px;
@@ -173,13 +59,24 @@ header img {
 }
 
 #confirm .search-btn {
-    border-top: 1px solid #727272;
     text-align: center;
     margin-top: 10%;
 }
 
 #confirm .btn-follows {
     margin-left: 50%;
+}
+/* main content */
+#row {
+    display: flex;
+    flex-flow: row wrap;
+    padding-left: 2%;
+    width: 100%;
+    top: 10%;
+}
+
+#container {
+    flex: 0 0 85%;
 }
 
 /*投稿編集　モーダル表示*/
@@ -235,30 +132,34 @@ header img {
     background-color: #fff;
 }
 
-#content table td:nth-child(4) {
-    vertical-align: bottom;
-    padding-bottom: 0cm;
-    padding-top: 4%;
-}
-
-#content table td:nth-child(4) .button-edit {
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 2%;
-}
-
 #content table td:nth-child(1) {
-    padding-left: 10%;
+    text-align: center;
+    width: 2%;
+}
+#content table td:nth-child(2) .post-username{
+    font-size: larger;
 }
 #content table td:nth-child(2) .table-post {
     margin-top: 3%;
     font-size: 13px;
 }
-
 #content table td:nth-child(3) .table-time {
-    position: absolute;
-    margin-left: 3.5%;
     font-size: 13px;
+}
+#content table td:nth-child(3) .content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20%;
+}
+#content table td:nth-child(3) .btn{
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+}
+#content table td:nth-child(3) {
+    width: 17%;
 }
 
 /* フォローリスト　*/

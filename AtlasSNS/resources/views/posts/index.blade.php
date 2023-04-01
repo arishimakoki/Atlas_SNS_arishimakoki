@@ -25,33 +25,34 @@
       <tbody>
         @foreach ($posts as $post)
         <tr>
-          <td class="table-image" style="width: 15%;">
+          <td class="table-image">
             <img src="{{ asset('storage/images/' . $post->user->images) }}" width="50px" height="50px">
           </td>
       <!-- 投稿者名の表示 -->
-            <td class="table-text" style="width: 68%;">
-               <div>{{ $post->user->username }}</div>
+            <td class="table-text" >
+               <div class=post-username>{{ $post->user->username }}</div>
                <div class="table-post">{!! nl2br(htmlspecialchars($post->post)) !!}</div>
             </td>
       <!-- 投稿時間　-->
             <td class="table-text">
                 <div class="table-time">{{ $post->created_at  }}</div>
-            </td>
-            <td style="width: 15%;">
               @if (!Auth::guest() && Auth::user()->id == $post->user_id)
       <!-- 投稿の編集ボタン -->
                 <div class="content">
-                   <a class="btn" data-toggle="modal" data-target="#Modal" data-whatever="{{ $post->post }}" data-post-id="{{$post->id}}">
-                     <img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit">
-                   </a>
-                </div>
+                   <button data-toggle="modal" data-target="#Modal" data-whatever="{{ $post->post }}" data-post-id="{{$post->id}}">
+                     <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                     編集
+</button>
                @endif
+            <!-- </td>
+             <td class="delet"> -->
               @if (!Auth::guest() && Auth::user()->id == $post->user_id)
-               <form action="{{route('posts.destroy', $post->id)}}" method="post" class="float-right">
+               <form action="{{route('posts.destroy', $post->id)}}" method="post" >
                   @csrf
                   @method('delete')
-                    <button type="image" onclick="return confirm('本当に削除しますか？');"><img src="images/trash-h.png" alt="" height="50px" class="button-delete"></button>
+                    <button type="image" onclick="return confirm('本当に削除しますか？');">削除<!--<img src="images/trash-h.png" alt="" height="50px" class="button-delete">--></button>
                 </form>
+              </div>
               @endif
             </td>
         </tr>
@@ -66,7 +67,8 @@
                     <textarea maxlength="150" id="post" class="form-control"  name="upPost" value="" ></textarea>
                   </div>
                       <button type="submit" class="edit">
-                        <img src="{{ asset('images/edit.png') }}" alt="編集" width="25px">
+                        <!-- <img src="{{ asset('images/edit.png') }}" alt="編集" width="25px"> -->
+                        編集
                       </button>
                         {{ csrf_field() }}
                 </form>

@@ -26,26 +26,46 @@
 </head>
 <body>
     <header>
-        <div id = "" class="head">
-           <h1><a href="/top"><img src="{{ asset('storage/images/atlas.png')}}" class="atlas"></a></h1>
-           <div id="" class="head-menu">
-               <nobr><p class="username">{{ Auth::user()->username }}さん</p></nobr>
-                 <div id="acmenu">
-                   <input type="checkbox" id="acmenu_bar01"> <!--チェックボックス（重要）-->
-                      <label for="acmenu_bar01" class="acmenu_bar" ></label>
-                     <ul id="links01">
-                       <nobr><li><a href="/top">HOME</a></li></nobr>
-                       <nobr><li><a href="/profile">プロフィール編集</a></li></nobr>
-                       <nobr><li><a href="/logout">ログアウト</a></li></nobr>
-                     </ul>
+         <div id="side-bar">
+           <div id="confirm">
+            <div class="users">
+             <p><img src="{{ asset('storage/images/' .auth()->user()->images) }}" class="icon" width="50px" height="50px"></p>
+             <p class="username"> {{ Auth::user()->username }}さん</p>
+            </div>
+               <div class="follows-count">
+                 <p>フォロー数</p>
+                  <p>{{ Auth::user()->follows()->count() }}名</p>
+               </div>
+               <p class="btn-follows"><a href="/follow-list" class="btn btn-light btn-sm">フォローリスト</a></p>
+                <div class="followers-count">
+                  <p>フォロワー数</p>
+                  <p>{{ Auth::user()->followers()->count() }}名</p>
+                </div>
+                <p class="btn-follows"><a href="/follower-list" class="btn btn-light btn-sm">フォロワーリスト</a></p>
+                  <div class="search-btn">
+                    <p><a href="/search" class="btn btn-light">ユーザー検索</a></p>
                   </div>
-            <p><img src="{{ asset('storage/images/' .auth()->user()->images) }}" class="icon" width="50px" height="50px"></p>
-           </div>
-        </div>
+                  <div class="navi">
+                    <ul id="links01">
+                      <nobr><li><a href="/top">
+                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      HOME
+                      </a></li></nobr>
+                      <nobr><li><a href="/profile">
+                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      プロフィール編集
+                      </a></li></nobr>
+                      <nobr><li><a href="/logout">
+                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      ログアウト
+                      </a></li></nobr>
+                    </ul>
+                  </div>
+             </div>
+          </div>
      </header>
-
-    <div id="row">
-        <div id="container">
+       <div id="row">
+         <div id="container">
             <div id="content">
             @yield('content')
             </div>
@@ -66,26 +86,8 @@
             </div>
             <div id="show">
             @yield('show')
-            </div>
-        </div >
-        <div id="side-bar">
-            <div id="confirm">
-                <p> {{ Auth::user()->username }}さんの</p>
-                  <div class="follows-count">
-                    <p>フォロー数</p>
-                    <p>{{ Auth::user()->follows()->count() }}名</p>
-                  </div>
-                <p class="btn-follows"><a href="/follow-list" class="btn btn-primary btn-sm">フォローリスト</a></p>
-                  <div class="followers-count">
-                    <p>フォロワー数</p>
-                    <p>{{ Auth::user()->followers()->count() }}名</p>
-                  </div>
-                <p class="btn-follows"><a href="/follower-list" class="btn btn-primary btn-sm">フォロワーリスト</a></p>
-                  <div class="search-btn">
-                    <p><a href="/search" class="btn btn-primary">ユーザー検索</a></p>
-                  </div>
-            </div>
-        </div>
+         </div>
+      </div >
     <footer>
     </footer>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
