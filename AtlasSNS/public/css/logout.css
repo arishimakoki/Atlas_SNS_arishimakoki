@@ -6,8 +6,7 @@ html{
 body{
     height: 100%;
     min-height: 100vh;
-    background-color: #0270f5;
-    background-image: linear-gradient(0deg, #f5e940 0%, #0270f5 100%);
+    background-image: linear-gradient(135deg, #fff 0%, #000 60%);
 }
 img{
     height: 50px;
@@ -45,7 +44,7 @@ header p{
     margin-left: 50%;
     margin-top: 5%;
     color: #fff;
-    background-color: red;
+    background-color: #696969;
     width: 100px;
     height: 40px;
     border-radius: 10px;
@@ -72,9 +71,10 @@ a{
     line-height: 100%;
 }
 #clear .btn{
-    margin-left: 25%;
+    margin: auto;
+    padding-top: 6px;
         color: #fff;
-        background-color: red;
+        background-color: #696969;
         width: 120px;
         height: 40px;
         border-radius: 10px;

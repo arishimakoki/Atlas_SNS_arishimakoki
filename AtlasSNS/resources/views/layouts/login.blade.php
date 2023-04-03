@@ -48,15 +48,15 @@
                   <div class="navi">
                     <ul id="links01">
                       <nobr><li><a href="/top">
-                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      <img src="{{ asset('images/home.png') }}" alt="" width="40px" class="" >
                       HOME
                       </a></li></nobr>
                       <nobr><li><a href="/profile">
-                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      <img src="{{ asset('images/user.png') }}" alt="" width="40px" class="">
                       プロフィール編集
                       </a></li></nobr>
                       <nobr><li><a href="/logout">
-                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
+                      <img src="{{ asset('images/logout.png') }}" alt="" width="40px" class="">
                       ログアウト
                       </a></li></nobr>
                     </ul>

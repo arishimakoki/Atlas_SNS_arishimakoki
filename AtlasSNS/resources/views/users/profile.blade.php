@@ -15,7 +15,7 @@
               </div>
             @endif
              <div class="m-3">
-               <img src="{{ asset('storage/images/' .auth()->user()->images) }}" width="50px" height="50px" class="icon-image">
+               <img src="{{ asset('storage/images/' .auth()->user()->images) }}" width="120px" height="120px" class="icon-image">
                 <div class="mb-7 row">
                     {{Form::label('username','username',['class'=>'col-sm-2 col-form-label'])}}
                     <div class="col-sm-5">

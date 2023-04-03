@@ -13,12 +13,12 @@
         @if(Auth::user()->isFollowing($users->id))
           <form method="POST" action="{{ route('unfollow', ['user' => $users->id]) }}">
         @csrf
-          <button type="submit" class="btn btn-danger" >フォロー解除</button>
+          <button type="submit" class="btn btn-dark" >フォロー解除</button>
           </form>
         @else
           <form method="POST" action="{{ route('follow', ['user' => $users->id]) }}">
         @csrf
-          <button type="submit" class="btn btn-primary" >フォローする</button>
+          <button type="submit" class="btn btn-light" >フォローする</button>
           </form>
         @endif
       </div>
@@ -30,7 +30,7 @@
       <td class="table-image">
           <img src="{{ asset('storage/images/' . $users->images) }}" width="50px" height="50px">
       </td>
-     <td class="table-text" style="width: 70%;">
+     <td class="table-text" style="width: 70%; font-size: large;">
        {{ $users->username }}
        <div class="table-post">{!! nl2br(htmlspecialchars($post->post)) !!}</div>
       </td>

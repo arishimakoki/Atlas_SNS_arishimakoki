@@ -9,7 +9,7 @@
          <!-- 投稿の本文 -->
          <div class="form-group">
             <img src="{{ asset('storage/images/' .auth()->user()->images) }}" width="50px" height="50px">
-            <textarea name="post" placeholder="投稿内容を入力してください" class="form-text" style="border:none;"></textarea>
+            <textarea name="post" placeholder="投稿内容を入力してください" class="form-text" style="border:none; width: 87%; background-color: #e6e6e6;"></textarea>
          </div>
            <!--　登録ボタン -->
             <button type="image" class="col-sm-offset-3 col-sm-6">
@@ -39,7 +39,7 @@
               @if (!Auth::guest() && Auth::user()->id == $post->user_id)
       <!-- 投稿の編集ボタン -->
                 <div class="content">
-                   <button data-toggle="modal" data-target="#Modal" data-whatever="{{ $post->post }}" data-post-id="{{$post->id}}">
+                   <button data-toggle="modal" data-target="#Modal" data-whatever="{{ $post->post }}" data-post-id="{{$post->id}}" class="btn btn-light">
                      <!---<img src="{{ asset('images/edit.png') }}" alt="編集" width="40px" class="button-edit"> -->
                      編集
 </button>
@@ -50,7 +50,7 @@
                <form action="{{route('posts.destroy', $post->id)}}" method="post" >
                   @csrf
                   @method('delete')
-                    <button type="image" onclick="return confirm('本当に削除しますか？');">削除<!--<img src="images/trash-h.png" alt="" height="50px" class="button-delete">--></button>
+                    <button type="image" onclick="return confirm('本当に削除しますか？');" class="btn btn-dark">削除<!--<img src="images/trash-h.png" alt="" height="50px" class="button-delete">--></button>
                 </form>
               </div>
               @endif
@@ -66,7 +66,7 @@
                     <input id="id" class="form-control" type="hidden" name="id" value="">
                     <textarea maxlength="150" id="post" class="form-control"  name="upPost" value="" ></textarea>
                   </div>
-                      <button type="submit" class="edit">
+                      <button type="submit" class="edit btn btn-light">
                         <!-- <img src="{{ asset('images/edit.png') }}" alt="編集" width="25px"> -->
                         編集
                       </button>

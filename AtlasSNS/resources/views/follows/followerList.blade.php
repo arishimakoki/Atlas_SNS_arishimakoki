@@ -19,7 +19,7 @@
       <td class="table-image">
        <a href="{{ url('show' ,[$posts->following_id]) }}" ><img src="{{ asset('storage/images/' . $posts->images) }}" width="50px" height="50px"></a>
       </td>
-     <td class="table-text" style="width: 70%;">
+     <td class="table-text" style="width: 70%; font-size: large;">
        {{ $posts->username }}
        <div class="table-post">{!! nl2br(htmlspecialchars($posts->post)) !!}</div>
       </td>

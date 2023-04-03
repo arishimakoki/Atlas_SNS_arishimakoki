@@ -4,6 +4,7 @@ html {}
 
 body {
     display: flex;
+    background-color: #e6e6e6;
 }
 
 button {
@@ -84,6 +85,9 @@ header {
     margin-top: 20%;
     margin-right: 40%;
 }
+::placeholder{
+    color: #696969;
+}
 
 #content .modal-content {
     width: 800px;
@@ -96,8 +100,9 @@ header {
 }
 
 #content .edit {
+    width: 70px;
     margin-bottom: 2%;
-    margin-left: 90%;
+    margin-left: 88%;
 }
 
 #content .form-control{
@@ -129,7 +134,7 @@ header {
 }
 
 #content table td {
-    background-color: #fff;
+        background-color: #e6e6e6;
 }
 
 #content table td:nth-child(1) {
@@ -151,24 +156,19 @@ header {
     justify-content: space-between;
     margin-top: 20%;
 }
-#content table td:nth-child(3) .btn{
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        appearance: none;
-}
+
 #content table td:nth-child(3) {
     width: 17%;
 }
 
 /* フォローリスト　*/
 #followList table td {
-    background-color: #fff;
+    background-color: #e6e6e6;
 }
 
 #followList table td:nth-child(1) {
-    padding-left: 10%;
+    text-align: center;
+    width: 2%;
 }
 
 #followList table td:nth-child(2) .table-post {
@@ -200,11 +200,12 @@ header {
 
 /* フォロワーリスト　*/
 #followerList table td {
-    background-color: #fff;
+    background-color: #e6e6e6;
 }
 
 #followerList table td:nth-child(1) {
-    padding-left: 10%;
+    text-align: center;
+    width: 2%;
 }
 
 #followerList table td:nth-child(2) .table-post {
@@ -214,6 +215,7 @@ header {
 
 #followerList table td:nth-child(3) {
     font-size: 13px;
+        width: 17%;
     text-align: right;
 }
 
@@ -323,11 +325,12 @@ header {
 }
 
 #show table td {
-    background-color: #fff;
+    background-color: #e6e6e6;
 }
 
 #show table td:nth-child(1) {
-    padding-left: 10%;
+    text-align: center;
+    width: 2%;
 }
 
 #show table td:nth-child(2) .table-post {
@@ -337,6 +340,7 @@ header {
 
 #show table td:nth-child(3) {
     font-size: 13px;
+        width: 17%;
     text-align: right;
 }
 /*プロフィール編集*/
@@ -346,11 +350,6 @@ header {
 }
 #profile .col-sm-5{
     margin-left: 20%;
-}
-#profile .icon-image{
-    position: absolute;
-    margin-top: 2.5%;
-    margin-left: 7%;
 }
 #profile .form-group{
     text-align: center;
