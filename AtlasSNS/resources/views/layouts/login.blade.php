@@ -29,7 +29,7 @@
          <div id="side-bar">
            <div id="confirm">
             <div class="users">
-             <p><img src="{{ asset('storage/images/' .auth()->user()->images) }}" class="icon" width="50px" height="50px"></p>
+             <p><img src="{{ public/asset('storage/images/' .auth()->user()->images) }}" class="icon" width="50px" height="50px"></p>
              <p class="username"> {{ Auth::user()->username }}さん</p>
             </div>
                <div class="follows-count">
